@@ -1,19 +1,32 @@
 package com.example.bookapp;
 
+//標準ライブラリ
+import java.util.ArrayList;
+import java.util.List;
+
+//Spring Bootライブラリ
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BookController {
 
-    @GetMapping("/book")
-    public Book getBook() {
+    @GetMapping("/books")
+    public List<Book> getBooks() {
 
-        Book book = new Book();
+        List<Book> books = new ArrayList<>();
 
-        book.title = "葬送のフリーレン";
-        book.author = "山田鐘人";
+        Book book1 = new Book();
+        book1.title = "葬送のフリーレン";
+        book1.author = "山田鐘人";
 
-        return book;
+        Book book2= new Book();
+        book2.title = "ダンダダン";
+        book2.author = "龍幸伸";
+
+        books.add(book1);
+        books.add(book2);
+
+        return books;
     }
 }

@@ -135,8 +135,17 @@
   - README作成
   - 要件整理
   - GitHub環境構築
-- 2026/05/16 作業時間：2.0h
+  
+- 2026/05/16(前半) 作業時間：2.0h
   - Spring Bootプロジェクト作成
   - Spring Web / JPA / PostgreSQL Driver追加
   - HelloController作成
   - ブラウザ表示確認
+
+- 2026/05/16(前半) 作業時間：2.0h
+  - Spring BootのControllerを学習
+　- @RestController / @GetMapping の役割を確認
+　- Bookクラス作成
+　- List<Book> と ArrayList を使用した複数データ管理を学習
+　- JSON形式で本一覧を返却するAPIを実装
+　- localhost:8080/books でJSON表示確認
