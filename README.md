@@ -48,6 +48,29 @@
 - 最新刊との差分表示
 - 巻数抜けチェック
 
+## 🧱 想定データ構造
+
+### Author(作者)
+- id
+- name
+
+### Series（シリーズ）
+- id
+- title
+- authorId
+
+### Book（本詳細）
+- id
+- title
+- seriesId
+- volumeNumber
+- isbn
+- status
+- purchaseDate
+- registeredDate
+- currentPage
+- totalPages
+
 ---
 
 ## 🛠 使用予定技術
@@ -112,3 +135,8 @@
   - README作成
   - 要件整理
   - GitHub環境構築
+- 2026/05/16 作業時間：2.0h
+  - Spring Bootプロジェクト作成
+  - Spring Web / JPA / PostgreSQL Driver追加
+  - HelloController作成
+  - ブラウザ表示確認
