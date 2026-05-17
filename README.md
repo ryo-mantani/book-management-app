@@ -178,7 +178,21 @@
   - datasource設定の理解
 ---
 
-
+### 2026/05/17（後半） 作業時間：1.0h
+- 実装内容
+  - Book Entity 作成
+  - BookRepository 作成
+  - PostgreSQL テーブル自動生成確認
+  - pgAdmin4 で books テーブル確認
+  - Spring Boot 起動確認
+  - DB接続エラー確認・修正
+- 学習内容
+  - Entity の役割
+  - Repository の役割
+  - JpaRepository の基本理解
+  - 主キー（id）の考え方
+  - JPAによるテーブル自動生成の仕組み
+  - pgAdmin4 の基本操作
 
 
 
