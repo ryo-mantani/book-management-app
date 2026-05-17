@@ -135,10 +135,8 @@
 - 実装内容
   - README作成
   - GitHub環境構築
-
 - 学習内容
   - 要件整理
-
 ---
 
 ### 2026/05/16（前半） 作業時間：2.0h
@@ -147,12 +145,10 @@
   - Spring Web / Spring Data JPA / PostgreSQL Driver追加
   - HelloController作成
   - ブラウザ表示確認
-
 - 学習内容
   - Spring Bootプロジェクト構成の理解
   - Controllerの役割を学習
   - @RestController / @GetMapping の基本理解
-
 ---
 
 ### 2026/05/16（後半） 作業時間：2.0h
@@ -160,28 +156,27 @@
   - Bookクラス作成
   - JSON形式で本一覧を返却するAPIを実装
   - localhost:8080/books でJSON表示確認
-
 - 学習内容
   - List<Book> と ArrayList を使用した複数データ管理を学習
   - class とインスタンス生成(new)の理解
   - add() によるListへのデータ追加を学習
   - JSONの基本構造を学習
   - APIによるフロント・バックエンド連携の基本を理解
+---
 
 ### 2026/05/17（前半） 作業時間：2.5h
-
 - 実装内容
   - PostgreSQL 17 インストール
   - pgAdmin 接続確認
   - bookapp DB作成
   - Spring Boot と PostgreSQL接続
   - application.properties設定
-
 - 学習内容
   - PostgreSQLの基本理解
   - ポート番号の役割
   - Spring Data JPA のDB連携概要
   - datasource設定の理解
+---
 
 
 
