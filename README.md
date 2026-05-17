@@ -168,3 +168,24 @@
   - JSONの基本構造を学習
   - APIによるフロント・バックエンド連携の基本を理解
 
+### 2026/05/17（前半） 作業時間：2.5h
+
+- 実装内容
+  - PostgreSQL 17 インストール
+  - pgAdmin 接続確認
+  - bookapp DB作成
+  - Spring Boot と PostgreSQL接続
+  - application.properties設定
+
+- 学習内容
+  - PostgreSQLの基本理解
+  - ポート番号の役割
+  - Spring Data JPA のDB連携概要
+  - datasource設定の理解
+
+
+
+
+
+
+
