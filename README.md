@@ -194,6 +194,22 @@
   - JPAによるテーブル自動生成の仕組み
   - pgAdmin4 の基本操作
 
+### 2026/05/18 作業時間：1.5h
+- 実装内容
+  - BookController 改修
+    - save() による本データ登録確認
+    - findAll() による一覧取得確認
+  - PostgreSQL へのデータ保存確認
+  - ブラウザでAPI動作確認
+  - GitHub 更新
+
+- 学習内容
+  - Controller の役割理解
+  - save() の基本動作
+  - findAll() の基本動作
+  - Spring Boot のリクエスト処理の流れ
+  - public フィールドとカプセル化の考え方
+  - インスタンスの基本理解
 
 
 
