@@ -10,12 +10,33 @@ import jakarta.persistence.Id;
 @Entity
 public class Book {
  
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id//主キー
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//自動採番
  
     private long id;
-    public String title;
-    public String author;
+
+    private String title;
+    private String author;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
 }
 

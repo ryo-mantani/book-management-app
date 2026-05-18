@@ -25,12 +25,12 @@ public class BookController {
     @GetMapping("/add")
     public String addBook() {
         Book book1 = new Book();
-        book1.title = "葬送のフリーレン";
-        book1.author = "山田鐘人";
+        book1.setTitle("葬送のフリーレン");
+        book1.setAuthor("山田鐘人");
 
         Book book2= new Book();
-        book2.title = "ダンダダン";
-        book2.author = "龍幸伸";
+        book2.setTitle("ダンダダン");
+        book2.setAuthor("龍幸伸");
 
         bookRepository.save(book1);
         bookRepository.save(book2);

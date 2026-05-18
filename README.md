@@ -194,7 +194,7 @@
   - JPAによるテーブル自動生成の仕組み
   - pgAdmin4 の基本操作
 
-### 2026/05/18 作業時間：1.5h
+### 2026/05/18_1 作業時間：1.5h
 - 実装内容
   - BookController 改修
     - save() による本データ登録確認
@@ -202,7 +202,6 @@
   - PostgreSQL へのデータ保存確認
   - ブラウザでAPI動作確認
   - GitHub 更新
-
 - 学習内容
   - Controller の役割理解
   - save() の基本動作
@@ -211,6 +210,16 @@
   - public フィールドとカプセル化の考え方
   - インスタンスの基本理解
 
+### 2026/05/18_2 作業時間：0.5h
+- 実装内容
+  - Book Entityクラスのカプセル化対応
+    - private 化
+    - getter / setter 作成
+  - BookController 改修
+    - getter / setter 使用
+- 学習内容
+  - public フィールドとカプセル化の考え方
+  - getter / setter の役割
 
 
 
