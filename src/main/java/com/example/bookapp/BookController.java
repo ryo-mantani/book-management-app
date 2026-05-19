@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+//Webアノテーション群
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
 import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
 
@@ -22,6 +28,9 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
+
+    //===========================画面テスト======================================================
+    /*
     //登録
     @GetMapping("/add")
     public String addBook() {
@@ -38,6 +47,7 @@ public class BookController {
 
         return "登録完了";
     }  
+    
 
     //一覧
     @GetMapping("/books")
@@ -46,6 +56,7 @@ public class BookController {
     }
 
     //削除
+    
     @GetMapping("/delete/{id}")
     public String deleteBook(@PathVariable Long id) {
         if (id <= 0){
@@ -55,6 +66,7 @@ public class BookController {
         bookRepository.deleteById(id);
         return "削除完了";
     }
+    
 
     //更新
     @GetMapping("/update/{id}")
@@ -72,10 +84,9 @@ public class BookController {
         book.setAuthor("更新Author");
 
         bookRepository.save(book);
-
         return "更新完了";
-
     }
+    */
 
     //検索（タイトルor著者）
     @GetMapping("/books/search/{keyType}/{keyword}")
@@ -91,6 +102,58 @@ public class BookController {
 
         return List.of();
 
+    }
+
+    //===========================API連携テスト======================================================
+    //登録
+    @PostMapping("/books")
+    public Book addPostBook(@RequestBody Book book) {
+
+        return bookRepository.save(book);
+    }
+
+   //削除
+    @DeleteMapping("/books/{id}")
+    public String deleteBook(@PathVariable Long id) {
+        if (id <= 0){
+            return "idは1以上を入力してください";
+        }
+
+        bookRepository.deleteById(id);
+        return "削除完了";
+    }
+
+    //更新
+    @PutMapping("/books/{id}")
+    public String updateBook(@PathVariable Long id) {
+        if (id <= 0){
+            return "idは1以上を入力してください";
+        }
+
+        Book book = bookRepository.findById(id).orElse(null);
+        if (book == null) {
+            return "対象の本が見つかりません";
+        }
+
+        book.setTitle("更新Title");
+        book.setAuthor("更新Author");
+
+        bookRepository.save(book);
+        return "更新完了";
+    }
+
+    @GetMapping("/books/{id}")
+    public Book getBooks(@PathVariable Long id) {
+        if (id <= 0){
+            return null;
+        }
+
+        Book book = bookRepository.findById(id).orElse(null);
+        if (book == null) {
+            return null;
+        }
+
+        return book;
     }
 
 }
