@@ -197,15 +197,16 @@
 ### 2026/05/18_1 作業時間：1.5h
 - 実装内容
   - BookController 改修
-    - save() による本データ登録確認
-    - findAll() による一覧取得確認
+    - CRUD処理
+      - save() による本データ登録確認
+      - findAll() による一覧取得確認
   - PostgreSQL へのデータ保存確認
   - ブラウザでAPI動作確認
   - GitHub 更新
 - 学習内容
   - Controller の役割理解
-  - save() の基本動作
-  - findAll() の基本動作
+  - CRUD
+    - 作成、取得の基本動作
   - Spring Boot のリクエスト処理の流れ
   - public フィールドとカプセル化の考え方
   - インスタンスの基本理解
@@ -221,5 +222,20 @@
   - public フィールドとカプセル化の考え方
   - getter / setter の役割
 
-
+### 2026/05/19 作業時間：1.5h
+- 実装内容
+  - BookRepository 改修
+    - 一覧取得の降順対応
+    - タイトル・著者検索機能追加
+  - BookController 改修
+    - CRUD処理
+      - deleteById() による削除処理追加
+      - 更新処理追加
+    - @PathVariable を利用した検索分岐処理追加
+- 学習内容
+  - CRUD
+    - 削除・更新処理
+  - @PathVariable の役割
+  - Repository による検索メソッド作成
+  - Spring Boot の検索処理の流れ
 

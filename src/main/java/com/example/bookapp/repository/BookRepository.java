@@ -5,6 +5,13 @@ import com.example.bookapp.entity.Book;
 //SpringBoot
 import org.springframework.data.jpa.repository.JpaRepository; 
 
-public interface BookRepository extends JpaRepository<Book, Long> {
+//List
+import java.util.List;
 
+public interface BookRepository extends JpaRepository<Book, Long> {
+    List<Book> findAllByOrderByIdDesc();//一覧表示：降順
+
+    List<Book> findByTitle(String title);//タイトル検索
+
+    List<Book> findByAuthor(String author);//著者検索
 }
