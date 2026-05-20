@@ -1,7 +1,7 @@
 package com.example.bookapp;
 
 //標準ライブラリ
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 

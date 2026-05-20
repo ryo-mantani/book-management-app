@@ -20,7 +20,6 @@
 - バックエンド～フロントエンドまでの実装経験
 - 実務を意識したCRUDアプリ開発
 - API連携やDB設計の学習
-
 ---
 
 ## ✨ 実装予定機能
@@ -47,30 +46,6 @@
 - 書籍情報自動取得
 - 最新刊との差分表示
 - 巻数抜けチェック
-
-## 🧱 想定データ構造
-
-### Author(作者)
-- id
-- name
-
-### Series（シリーズ）
-- id
-- title
-- authorId
-
-### Book（本詳細）
-- id
-- title
-- seriesId
-- volumeNumber
-- isbn
-- status
-- purchaseDate
-- registeredDate
-- currentPage
-- totalPages
-
 ---
 
 ## 🛠 使用予定技術
@@ -90,8 +65,21 @@
 ### その他
 - Git / GitHub
 - REST API
-
 ---
+
+## ドキュメント
+
+- [学習ログ](docs/study-log.md)
+- [開発ログ](docs/development-log.md)
+- [DB設計](docs/db-design.md)
+- [API設計](docs/api-design.md)
+---
+
+## ディレクトリ構成
+book-app
+├─ src
+├─ docs
+└─ README.md
 
 ## 📷 将来的に実装したい機能
 
@@ -100,7 +88,6 @@
 - レスポンシブ対応
 - ログイン機能
 - クラウド公開
-
 ---
 
 ## 🚀 開発予定
@@ -118,7 +105,6 @@
 - UI改善
 - グラフ化
 - デプロイ
-
 ---
 
 ## 💡 工夫したいポイント
@@ -127,120 +113,3 @@
 - シリーズ単位での管理
 - 可視化による読書状況分析
 - 実用性を意識したUI設計
-
-
-## 📝 開発ログ
-
-### 2026/05/15 作業時間：1.5h
-- 実装内容
-  - README作成
-  - GitHub環境構築
-- 学習内容
-  - 要件整理
----
-
-### 2026/05/16（前半） 作業時間：2.0h
-- 実装内容
-  - Spring Bootプロジェクト作成
-  - Spring Web / Spring Data JPA / PostgreSQL Driver追加
-  - HelloController作成
-  - ブラウザ表示確認
-- 学習内容
-  - Spring Bootプロジェクト構成の理解
-  - Controllerの役割を学習
-  - @RestController / @GetMapping の基本理解
----
-
-### 2026/05/16（後半） 作業時間：2.0h
-- 実装内容
-  - Bookクラス作成
-  - JSON形式で本一覧を返却するAPIを実装
-  - localhost:8080/books でJSON表示確認
-- 学習内容
-  - List<Book> と ArrayList を使用した複数データ管理を学習
-  - class とインスタンス生成(new)の理解
-  - add() によるListへのデータ追加を学習
-  - JSONの基本構造を学習
-  - APIによるフロント・バックエンド連携の基本を理解
----
-
-### 2026/05/17（前半） 作業時間：2.5h
-- 実装内容
-  - PostgreSQL 17 インストール
-  - pgAdmin 接続確認
-  - bookapp DB作成
-  - Spring Boot と PostgreSQL接続
-  - application.properties設定
-- 学習内容
-  - PostgreSQLの基本理解
-  - ポート番号の役割
-  - Spring Data JPA のDB連携概要
-  - datasource設定の理解
----
-
-### 2026/05/17（後半） 作業時間：1.0h
-- 実装内容
-  - Book Entity 作成
-  - BookRepository 作成
-  - PostgreSQL テーブル自動生成確認
-  - pgAdmin4 で books テーブル確認
-  - Spring Boot 起動確認
-  - DB接続エラー確認・修正
-- 学習内容
-  - Entity の役割
-  - Repository の役割
-  - JpaRepository の基本理解
-  - 主キー（id）の考え方
-  - JPAによるテーブル自動生成の仕組み
-  - pgAdmin4 の基本操作
-
-### 2026/05/18_1 作業時間：1.5h
-- 実装内容
-  - BookController 改修
-    - CRUD処理
-      - save() による本データ登録確認
-      - findAll() による一覧取得確認
-  - PostgreSQL へのデータ保存確認
-  - ブラウザでAPI動作確認
-  - GitHub 更新
-- 学習内容
-  - Controller の役割理解
-  - CRUD
-    - 作成、取得の基本動作
-  - Spring Boot のリクエスト処理の流れ
-  - public フィールドとカプセル化の考え方
-  - インスタンスの基本理解
-
-### 2026/05/18_2 作業時間：0.5h
-- 実装内容
-  - Book Entityクラスのカプセル化対応
-    - private 化
-    - getter / setter 作成
-  - BookController 改修
-    - getter / setter 使用
-- 学習内容
-  - public フィールドとカプセル化の考え方
-  - getter / setter の役割
-
-### 2026/05/19 作業時間：3.5h
-- 実装内容
-  - BookRepository 改修
-    - 一覧取得の降順対応
-    - タイトル・著者検索機能追加
-  - BookController 改修
-    - CRUD処理
-      - save() による本データ登録
-      - findAll() による一覧取得
-      - deleteById() による削除処理追加
-      - 更新処理追加
-    - @PathVariable を利用した検索分岐処理追加
-  - PostgreSQL とのデータ連携確認
-  - Postman による動作確認
-    - POST、GET、PUT、DELETE 対応
-- 学習内容
-  - CRUD の基本理解
-    - 作成・取得・更新・削除処理
-  - @PathVariable の役割
-  - Repository による検索メソッド作成
-  - CRUD API の動作確認
-
