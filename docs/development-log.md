@@ -1,5 +1,20 @@
 ## 📝 開発ログ
 
+### 2026/05/20 作業時間：2.0h
+- 実装内容
+  - BookController 改修
+    - ResponseEntity を利用したレスポンス対応
+    - HTTPステータスコード返却対応
+    - findById() による1件取得処理追加
+    - RequestBody を利用したPOST/PUT処理対応
+    - PathVariable を利用したID取得対応
+  - CRUD API 改修
+    - GET、POST、PUT、DELETE のREST形式整理
+  - Postman によるAPI動作確認
+    - 200 / 400 / 404 レスポンス確認
+  - README / docs 構成整理
+---
+
 ### 2026/05/19 作業時間：3.5h
 - 実装内容
   - BookRepository 改修

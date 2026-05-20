@@ -1,5 +1,19 @@
 ## 📝 学習ログ
 
+### 2026/05/20 作業時間：2.0h
+- 学習内容
+  - ResponseEntity の役割
+  - HTTPステータスコードの基本理解
+    - 200 OK
+    - 400 Bad Request
+    - 404 Not Found
+  - RequestBody の役割
+  - PathVariable の役割
+  - Optional と null の基本理解
+  - REST API の基本構成
+  - APIレスポンス設計の考え方
+---
+
 ### 2026/05/19 作業時間：3.5h
 - 学習内容
   - CRUD の基本理解
