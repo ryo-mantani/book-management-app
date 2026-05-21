@@ -4,14 +4,14 @@ package com.example.bookapp.service;
 //標準ライブラリ
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 //Webアノテーション群
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 //entity、repository、service
 import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
+import com.example.bookapp.dto.BookRequestDto;
 
 @Service
 public class BookService {
@@ -24,8 +24,13 @@ public class BookService {
     }
 
     //登録
-    public Book addBook(Book request){
-        return bookRepository.save(request);
+    public Book addBook(BookRequestDto request){
+
+        Book book = new Book();
+        book.setTitle(request.getBookTitle());
+        book.setAuthor(request.getAuthorName());
+
+        return bookRepository.save(book);
     }
 
     //削除
@@ -43,7 +48,7 @@ public class BookService {
     }
 
      //更新
-    public Book updateBook(Long id, Book request){
+    public Book updateBook(Long id, BookRequestDto request){
 
         //id存在確認
         Book book = bookRepository.findById(id).orElse(null);
@@ -51,8 +56,8 @@ public class BookService {
             return null;
         }
 
-        book.setTitle(request.getTitle());
-        book.setAuthor(request.getAuthor());
+        book.setTitle(request.getBookTitle());
+        book.setAuthor(request.getAuthorName());
 
         return bookRepository.save(book);
   
@@ -69,7 +74,22 @@ public class BookService {
         return bookRepository.findAll();
     }
     
+    //著者orタイトル検索
+    public List<Book> searchBook(String keyType, String keyword){
 
+        switch (keyType) {
+            case "title":
+                return bookRepository.findByTitle(keyword);
+
+            case "author":
+                return bookRepository.findByAuthor(keyword);
+
+            default:
+                return List.of();
+
+        }
+
+    }
 
 
 }

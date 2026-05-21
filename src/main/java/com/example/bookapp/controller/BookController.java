@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
 import com.example.bookapp.service.BookService;
+import com.example.bookapp.dto.BookRequestDto;
 
 @RestController
 public class BookController {
@@ -37,29 +38,11 @@ public class BookController {
         this.bookService = bookService;
     }
 
-
-    //===========================画面テスト======================================================
-    //検索（タイトルor著者）
-    @GetMapping("/books/search/{keyType}/{keyword}")
-    public List<Book> searchBooks(@PathVariable String keyType, @PathVariable String keyword) {
-
-        if (keyType.equals("title")) {
-            return bookRepository.findByTitle(keyword);
-        }
-
-        if (keyType.equals("author")) {
-            return bookRepository.findByAuthor(keyword);
-        }
-
-        return List.of();
-
-    }
-
     //===========================API連携テスト======================================================
      
     //登録
     @PostMapping("/books")
-    public ResponseEntity<?> addPostBook(@RequestBody Book request) {
+    public ResponseEntity<?> addPostBook(@RequestBody BookRequestDto request) {
         bookService.addBook(request);
         return ResponseEntity.ok("登録完了");
     }
@@ -85,7 +68,7 @@ public class BookController {
 
     //更新
     @PutMapping("/books/{id}")
-    public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody Book request) {
+    public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody BookRequestDto request) {
         //入力確認
         if (id <= 0){
             return ResponseEntity.badRequest().body("idは1以上を入力してください");
@@ -121,6 +104,13 @@ public class BookController {
     @GetMapping("/books")
     public ResponseEntity<?> getBook(){
         return ResponseEntity.ok(bookService.getBooks());
+    }
+
+    //検索（タイトルor著者）
+    @GetMapping("/books/search/{keyType}/{keyword}")
+    public ResponseEntity<?> searchBook(@PathVariable String keyType, @PathVariable String keyword) {
+        return ResponseEntity.ok(bookService.searchBook(keyType, keyword));
+
     }
 
 }

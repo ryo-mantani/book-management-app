@@ -1,6 +1,6 @@
 ## 📝 開発ログ
 
-### 2026/05/21 作業時間：3.0h
+### 2026/05/21 作業時間：5.5h
 - 実装内容
   - Service層導入
     - BookService 作成
@@ -8,6 +8,10 @@
   - BookController 改修
     - Service 呼び出し形式へ変更
     - CRUD処理の責務整理
+  - DTO導入
+    - BookRequestDto 作成
+    - RequestBody 受け取り処理を DTO形式へ変更
+    - Entity と API受け渡しデータの分離対応
   - Postman によるAPI動作確認（責務整理後）
     - GET、POST、PUT、DELETE 再確認
 

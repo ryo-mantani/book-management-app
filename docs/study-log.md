@@ -6,6 +6,8 @@
   - Controller と Service の責務分離
   - Repository と Service の関係
   - DI（依存性注入）の基本理解
+  - DTO の役割
+  - Entity と DTO の違い
   - Spring Boot における処理分離の考え方
   - 保守性を意識したコード構成
 
