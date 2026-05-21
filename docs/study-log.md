@@ -1,5 +1,14 @@
 ## 📝 学習ログ
 
+### 2026/05/21 作業時間：3.0h
+- 学習内容
+  - Service層 の役割
+  - Controller と Service の責務分離
+  - Repository と Service の関係
+  - DI（依存性注入）の基本理解
+  - Spring Boot における処理分離の考え方
+  - 保守性を意識したコード構成
+
 ### 2026/05/20 作業時間：2.0h
 - 学習内容
   - ResponseEntity の役割

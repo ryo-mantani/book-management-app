@@ -1,5 +1,16 @@
 ## 📝 開発ログ
 
+### 2026/05/21 作業時間：3.0h
+- 実装内容
+  - Service層導入
+    - BookService 作成
+    - BookRepository の処理を Service層へ分離
+  - BookController 改修
+    - Service 呼び出し形式へ変更
+    - CRUD処理の責務整理
+  - Postman によるAPI動作確認（責務整理後）
+    - GET、POST、PUT、DELETE 再確認
+
 ### 2026/05/20 作業時間：2.0h
 - 実装内容
   - BookController 改修

@@ -1,4 +1,4 @@
-package com.example.bookapp;
+package com.example.bookapp.controller;
 
 //標準ライブラリ
 //import java.util.ArrayList;
@@ -17,17 +17,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-//entity、repository
+//entity、repository、service
 import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
+import com.example.bookapp.service.BookService;
 
 @RestController
 public class BookController {
 
+    //Repository宣言
     private final BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository) {
+    //Service宣言
+    private final BookService bookService;
+
+    //コンストラクタ
+    public BookController(BookRepository bookRepository, BookService bookService) {
         this.bookRepository = bookRepository;
+        this.bookService = bookService;
     }
 
 
@@ -53,7 +60,7 @@ public class BookController {
     //登録
     @PostMapping("/books")
     public ResponseEntity<?> addPostBook(@RequestBody Book request) {
-        bookRepository.save(request);
+        bookService.addBook(request);
         return ResponseEntity.ok("登録完了");
     }
     
@@ -67,13 +74,11 @@ public class BookController {
         }
 
         //id存在確認
-        Book book = bookRepository.findById(id).orElse(null);
+        Book book = bookService.deleteBook(id);
         if (book == null){
             return ResponseEntity.notFound().build();
         }
 
-        //削除
-        bookRepository.deleteById(id);
         return ResponseEntity.ok("削除完了");
 
     }
@@ -87,35 +92,35 @@ public class BookController {
         }
 
         //id存在確認
-        Book book = bookRepository.findById(id).orElse(null);
+        Book book = bookService.updateBook(id, request);
         if (book == null){
             return ResponseEntity.notFound().build();
         }
-
-        book.setTitle(request.getTitle());
-        book.setAuthor(request.getAuthor());
-
-        bookRepository.save(book);
         return ResponseEntity.ok("更新完了");
     }
     
     //id検索
     @GetMapping("/books/{id}")
     public ResponseEntity<?> getBook(@PathVariable Long id){
-        
+
         //入力確認
-        if (id <= 0){
+        if (id <= 0) {
             return ResponseEntity.badRequest().body("idは1以上を入力してください");
         }
 
         //id存在確認
-        Book book = bookRepository.findById(id).orElse(null);
-        if (book == null){
+        Book book = bookService.getBook(id);
+        if (book == null) {
             return ResponseEntity.notFound().build();
         }
 
         return ResponseEntity.ok(book);
+    }
 
+    //一覧表示
+    @GetMapping("/books")
+    public ResponseEntity<?> getBook(){
+        return ResponseEntity.ok(bookService.getBooks());
     }
 
 }
