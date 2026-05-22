@@ -1,5 +1,20 @@
 ## 📝 開発ログ
 
+### 2026/05/22 作業時間：2.0h
+- 実装内容
+  - DTO拡張
+    - BookResponseDto 作成
+    - GET API の返却形式を DTO化
+    - Entity → DTO 変換処理追加
+    - List<Book> → List<BookResponseDto> 変換処理追加
+  - BookService 改修
+    - DTO変換処理を Service層へ実装
+    - for-each による DTOリスト生成処理追加
+  - Postman によるAPI動作確認
+    - DTO形式でのJSON返却確認
+    - id / title / author 表示確認
+---
+
 ### 2026/05/21 作業時間：5.5h
 - 実装内容
   - Service層導入
@@ -14,6 +29,7 @@
     - Entity と API受け渡しデータの分離対応
   - Postman によるAPI動作確認（責務整理後）
     - GET、POST、PUT、DELETE 再確認
+---
 
 ### 2026/05/20 作業時間：2.0h
 - 実装内容

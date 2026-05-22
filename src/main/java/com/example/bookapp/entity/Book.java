@@ -13,7 +13,7 @@ public class Book {
     @Id//主キー
     @GeneratedValue(strategy = GenerationType.IDENTITY)//自動採番
  
-    private long id;
+    private Long id;
 
     private String title;
     private String author;

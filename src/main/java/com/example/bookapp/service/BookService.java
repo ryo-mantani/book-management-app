@@ -2,6 +2,7 @@ package com.example.bookapp.service;
 
 
 //標準ライブラリ
+import java.util.ArrayList;
 import java.util.List;
 
 //Webアノテーション群
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
 import com.example.bookapp.dto.BookRequestDto;
+import com.example.bookapp.dto.BookResponseDto;
 
 @Service
 public class BookService {
@@ -70,9 +72,22 @@ public class BookService {
     }
 
     //一覧
-    public List<Book> getBooks(){
-        return bookRepository.findAll();
-    }
+    public List<BookResponseDto> getBooks(){
+        List<BookResponseDto> bookResponses = new ArrayList<>();
+        List<Book> books = bookRepository.findAllByOrderByIdDesc();//降順
+        
+        for (Book book:books){
+            BookResponseDto bookResponse = new BookResponseDto();
+            //バラして再度、配列に入れなおす
+            bookResponse.setbookId(book.getId());
+            bookResponse.setBookTitle(book.getTitle());
+            bookResponse.setAuthorName(book.getAuthor());
+            bookResponses.add(bookResponse);
+        }
+        
+        return bookResponses;//配列で返す
+
+    }   
     
     //著者orタイトル検索
     public List<Book> searchBook(String keyType, String keyword){
