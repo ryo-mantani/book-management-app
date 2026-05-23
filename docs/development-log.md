@@ -1,4 +1,26 @@
 ## 📝 開発ログ
+### 2026/05/23 作業時間：4.0h
+- 実装内容
+  - Validation導入
+    - spring-boot-starter-validation 追加
+    - BookRequestDto に Validation設定追加
+      - @NotBlank
+      - @Size
+    - POST / PUT API に @Valid 追加
+  - GlobalExceptionHandler 作成
+    - @ControllerAdvice による例外処理追加
+    - MethodArgumentNotValidException 対応
+    - Validationエラーメッセージ返却対応
+    - Map.of() によるJSON形式レスポンス対応
+    - List<String> を利用した複数Validationエラー返却対応
+  - Validationエラー処理改修
+    - getFieldErrors() を利用した複数メッセージ取得処理追加
+    - ArrayList によるエラーメッセージ蓄積処理追加
+  - Postman による動作確認
+    - Validationエラー確認
+    - 400 Bad Request レスポンス確認
+    - 複数Validationエラー返却確認
+---
 
 ### 2026/05/22 作業時間：2.0h
 - 実装内容

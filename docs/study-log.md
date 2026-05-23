@@ -1,5 +1,22 @@
 ## 📝 学習ログ
 
+### 2026/05/23 作業時間：4.0h
+- 学習内容
+  - Validation の基本理解
+  - @Valid の役割
+  - @NotBlank / @Size の役割
+  - ControllerAdvice の役割
+  - ExceptionHandler の役割
+  - MethodArgumentNotValidException の基本理解
+  - getBindingResult() の役割
+  - getFieldError() / getDefaultMessage() の利用方法
+  - APIエラーレスポンス設計の基本理解
+  - getFieldErrors() を利用した複数エラー取得
+  - Map.of() によるJSONレスポンス生成
+  - List<String> と ArrayList の利用方法
+  - 複数Validationエラー返却の考え方
+  ---
+
 ### 2026/05/22 作業時間：2.0h
 - 学習内容
   - Response DTO の役割

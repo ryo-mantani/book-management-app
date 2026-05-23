@@ -1,7 +1,16 @@
 package com.example.bookapp.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class BookRequestDto {
+
+    @NotBlank(message = "タイトルを入れてください。")
+    @Size(max = 100)
     private String bookTitle;
+
+    @NotBlank(message = "著者名を入れてください。")
+    @Size(max = 100)
     private String authorName;
 
     public String getBookTitle() {

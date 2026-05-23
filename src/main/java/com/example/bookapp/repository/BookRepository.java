@@ -11,7 +11,7 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findAllByOrderByIdDesc();//一覧表示：降順
 
-    List<Book> findByTitle(String title);//タイトル検索
-
-    List<Book> findByAuthor(String author);//著者検索
+    List<Book> findByTitleOrderByIdDesc(String title);//タイトル検索
+    
+    List<Book> findByAuthorOrderByIdDesc(String author);//著者検索
 }

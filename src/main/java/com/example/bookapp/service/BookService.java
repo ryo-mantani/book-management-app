@@ -8,8 +8,6 @@ import java.util.List;
 //Webアノテーション群
 import org.springframework.stereotype.Service;
 
-
-//entity、repository、service
 import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
 import com.example.bookapp.dto.BookRequestDto;
@@ -67,8 +65,19 @@ public class BookService {
 
 
     //id検索
-    public Book getBook(Long id){
-        return bookRepository.findById(id).orElse(null);
+    public BookResponseDto getBook(Long id){
+        
+        Book book = bookRepository.findById(id).orElse(null);
+        if (book == null){
+            return null;
+        } else {    
+            BookResponseDto bookResponse = new BookResponseDto();
+            bookResponse.setBookId(book.getId());
+            bookResponse.setBookTitle(book.getTitle());
+            bookResponse.setAuthorName(book.getAuthor());
+
+            return bookResponse;
+        }
     }
 
     //一覧
@@ -79,7 +88,7 @@ public class BookService {
         for (Book book:books){
             BookResponseDto bookResponse = new BookResponseDto();
             //バラして再度、配列に入れなおす
-            bookResponse.setbookId(book.getId());
+            bookResponse.setBookId(book.getId());
             bookResponse.setBookTitle(book.getTitle());
             bookResponse.setAuthorName(book.getAuthor());
             bookResponses.add(bookResponse);
@@ -90,20 +99,36 @@ public class BookService {
     }   
     
     //著者orタイトル検索
-    public List<Book> searchBook(String keyType, String keyword){
+    public List<BookResponseDto> searchBook(String keyType, String keyword){
+       
+        List<Book> books;
 
         switch (keyType) {
             case "title":
-                return bookRepository.findByTitle(keyword);
+                books = bookRepository.findByTitleOrderByIdDesc(keyword);
+                break;
 
             case "author":
-                return bookRepository.findByAuthor(keyword);
+                books = bookRepository.findByAuthorOrderByIdDesc(keyword);
+                break;
 
             default:
-                return List.of();
+                return getBooks();
 
         }
 
+        List<BookResponseDto> bookResponses = new ArrayList<>();
+
+        for (Book book:books){
+            BookResponseDto bookResponse = new BookResponseDto();
+            //バラして再度、配列に入れなおす
+            bookResponse.setBookId(book.getId());
+            bookResponse.setBookTitle(book.getTitle());
+            bookResponse.setAuthorName(book.getAuthor());
+            bookResponses.add(bookResponse);
+        } 
+        
+        return bookResponses;//配列で返す
     }
 
 

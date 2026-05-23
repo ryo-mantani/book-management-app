@@ -6,11 +6,11 @@ public class BookResponseDto {
     private String authorName;
 
     //不要になったら削除
-    public Long getbookId() {
+    public Long getBookId() {
         return bookId;
     }
     //不要になったら削除
-    public void setbookId(Long bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
