@@ -2,11 +2,13 @@ package com.example.bookapp.controller;
 
 //標準ライブラリ
 import java.util.List;
+import java.util.Map;
 
 //Spring Bootライブラリ
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 //Webアノテーション群
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+
 
 //entity、repository、service
 import com.example.bookapp.entity.Book;
@@ -43,7 +46,7 @@ public class BookController {
     @PostMapping("/books")
     public ResponseEntity<?> addPostBook(@Valid @RequestBody BookRequestDto request) {
         bookService.addBook(request);
-        return ResponseEntity.ok("登録完了");
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("messages", List.of("登録完了")));
     }
     
 
@@ -52,16 +55,17 @@ public class BookController {
     public ResponseEntity<?> deleteBook(@PathVariable Long id) {
         //入力確認
         if (id <= 0){
-            return ResponseEntity.badRequest().body("idは1以上を入力してください");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("idは1以上を入力してください")));
+
         }
 
         //id存在確認
         Book book = bookService.deleteBook(id);
         if (book == null){
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of("該当のidがありません。")));
         }
 
-        return ResponseEntity.ok("削除完了");
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("messages", List.of("削除完了")));
 
     }
 
@@ -70,33 +74,28 @@ public class BookController {
     public ResponseEntity<?> updateBook(@PathVariable Long id, @Valid @RequestBody BookRequestDto request) {
         //入力確認
         if (id <= 0){
-            return ResponseEntity.badRequest().body("idは1以上を入力してください");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("idは1以上を入力してください")));
         }
 
         //id存在確認
         Book book = bookService.updateBook(id, request);
         if (book == null){
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of("該当のidがありません。")));
         }
-        return ResponseEntity.ok("更新完了");
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("messages", List.of("更新完了")));
     }
     
     //id検索
     @GetMapping("/books/{id}")
-    public ResponseEntity<?> getBook(@PathVariable Long id){
+    public ResponseEntity<?> getBook(@PathVariable Long id) {
 
         //入力確認
         if (id <= 0) {
-            return ResponseEntity.badRequest().body("idは1以上を入力してください");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("idは1以上を入力してください")));
         }
-
-        //id存在確認
-        BookResponseDto book = bookService.getBook(id);
-        if (book == null) {
-            return ResponseEntity.badRequest().body("検索対象の情報がありません。");
-
-        }
-
+        
+        BookResponseDto book = bookService.getBook(id);//id存在確認
+        
         return ResponseEntity.ok(book);
     }
 
@@ -112,13 +111,13 @@ public class BookController {
 
         //{keyType}の入力チェック
         if (!keyType.equals("title") && !keyType.equals("author")) {
-            return ResponseEntity.badRequest().body("title または author を指定してください");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("title または author を指定してください")));
         }
  
         //存在確認
         List<BookResponseDto> books = bookService.searchBook(keyType, keyword);
         if (books.isEmpty()) {
-            return ResponseEntity.badRequest().body("検索対象の情報がありません。");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of("検索対象の情報がありません。")));
 
         }
 

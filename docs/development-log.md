@@ -1,4 +1,25 @@
 ## 📝 開発ログ
+
+### 2026/05/24 作業時間：3.0h
+- 実装内容
+  - APIエラーレスポンス統一対応
+    - Map.of("messages", List.of()) 形式へ統一
+    - Validation / Controller エラーJSON形式整理
+  - BookNotFoundException 作成
+    - RuntimeException 継承
+    - super(message) によるメッセージ管理対応
+  - BookService 改修
+    - getBook() の null返却を throw形式へ変更
+    - BookNotFoundException を利用した例外送出対応
+  - GlobalExceptionHandler 改修
+    - @ExceptionHandler(BookNotFoundException.class) 追加
+    - exception.getMessage() を利用したJSONレスポンス返却対応
+  - Postman による動作確認
+    - 404 Not Found レスポンス確認
+    - ValidationエラーJSON形式確認
+    - 例外発生時のJSON返却確認
+ ---
+
 ### 2026/05/23 作業時間：4.0h
 - 実装内容
   - Validation導入

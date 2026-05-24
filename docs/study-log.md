@@ -1,5 +1,17 @@
 ## 📝 学習ログ
 
+### 2026/05/24 作業時間：3.0h
+- 学習内容
+  - throw の基本理解
+  - RuntimeException の役割
+  - super(message) の役割
+  - カスタム例外クラスの作成方法
+  - Service → ExceptionHandler の例外処理フロー
+  - exception.getMessage() の利用方法
+  - APIエラーレスポンス統一の考え方
+  - null返却と例外送出の違い
+  - 404レスポンス設計の基本理解
+
 ### 2026/05/23 作業時間：4.0h
 - 学習内容
   - Validation の基本理解

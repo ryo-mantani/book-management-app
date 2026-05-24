@@ -24,7 +24,15 @@ public class GlobalExceptionHandler {
             messages.add(error.getDefaultMessage());
         }
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("message", messages));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", messages));
+    }
+
+
+    @ExceptionHandler(BookNotFoundException.class)
+    public ResponseEntity<?> bookNotException(BookNotFoundException notException) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of(notException.getMessage())));
     }
 
 }
+
+

@@ -12,6 +12,7 @@ import com.example.bookapp.entity.Book;
 import com.example.bookapp.repository.BookRepository;
 import com.example.bookapp.dto.BookRequestDto;
 import com.example.bookapp.dto.BookResponseDto;
+import com.example.bookapp.exception.BookNotFoundException;
 
 @Service
 public class BookService {
@@ -69,7 +70,7 @@ public class BookService {
         
         Book book = bookRepository.findById(id).orElse(null);
         if (book == null){
-            return null;
+            throw new BookNotFoundException("該当のidがありません。");
         } else {    
             BookResponseDto bookResponse = new BookResponseDto();
             bookResponse.setBookId(book.getId());
