@@ -1,5 +1,23 @@
 ## 📝 開発ログ
 
+### 2026/05/25 作業時間：3.0h
+- 実装内容
+  - BookService 改修
+    - deleteBook() の null返却を throw形式へ変更
+    - updateBook() の null返却を throw形式へ変更
+    - BookNotFoundException を利用した例外送出へ統一
+  - BookController 改修
+    - delete / update の nullチェック削除
+    - Service層例外処理へ責務統一
+  - CORS設定追加
+    - WebConfig 作成
+    - WebMvcConfigurer 実装
+    - addCorsMappings() による許可設定追加
+  - Postman によるAPI動作確認
+    - delete / update の例外レスポンス確認
+    - CORS設定後の接続確認
+     ---
+
 ### 2026/05/24 作業時間：3.0h
 - 実装内容
   - APIエラーレスポンス統一対応

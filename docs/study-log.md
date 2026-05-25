@@ -1,5 +1,18 @@
 ## 📝 学習ログ
 
+### 2026/05/25 作業時間：3.0h
+- 学習内容
+  - Service層へ例外処理を集約する考え方
+  - throw による例外フロー理解
+  - ControllerAdvice との連携理解
+  - void と Void の違い
+  - JpaRepository 組み込みメソッド理解
+  - implements / interface / @Override の基本理解
+  - CORS の基本理解
+  - WebMvcConfigurer の役割
+  - ブラウザとAPI間の接続制限の考え方
+  ---
+
 ### 2026/05/24 作業時間：3.0h
 - 学習内容
   - throw の基本理解
@@ -11,6 +24,7 @@
   - APIエラーレスポンス統一の考え方
   - null返却と例外送出の違い
   - 404レスポンス設計の基本理解
+  ---
 
 ### 2026/05/23 作業時間：4.0h
 - 学習内容

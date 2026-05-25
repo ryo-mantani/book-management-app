@@ -1,6 +1,5 @@
 package com.example.bookapp.service;
 
-
 //標準ライブラリ
 import java.util.ArrayList;
 import java.util.List;
