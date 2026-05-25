@@ -35,32 +35,32 @@ public class BookService {
     }
 
     //削除
-    public Book deleteBook(Long id){
+    public void deleteBook(Long id){
 
         //id存在確認
         Book book = bookRepository.findById(id).orElse(null);
         if (book == null){
-            return null;
+            throw new BookNotFoundException("該当のidがありません。");
         }
 
         //削除
         bookRepository.deleteById(id);
-        return book;
+  
     }
 
      //更新
-    public Book updateBook(Long id, BookRequestDto request){
+    public void updateBook(Long id, BookRequestDto request){
 
         //id存在確認
         Book book = bookRepository.findById(id).orElse(null);
         if (book == null){
-            return null;
+            throw new BookNotFoundException("該当のidがありません。");
         }
 
         book.setTitle(request.getBookTitle());
         book.setAuthor(request.getAuthorName());
 
-        return bookRepository.save(book);
+        bookRepository.save(book);
   
     }
 

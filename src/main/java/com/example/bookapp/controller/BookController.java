@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 //entity、repository、service
-import com.example.bookapp.entity.Book;
 import com.example.bookapp.service.BookService;
 
 //Spring Boot
@@ -56,17 +55,10 @@ public class BookController {
         //入力確認
         if (id <= 0){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("idは1以上を入力してください")));
-
         }
 
-        //id存在確認
-        Book book = bookService.deleteBook(id);
-        if (book == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of("該当のidがありません。")));
-        }
-
+        bookService.deleteBook(id);
         return ResponseEntity.status(HttpStatus.OK).body(Map.of("messages", List.of("削除完了")));
-
     }
 
     //更新
@@ -77,11 +69,7 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("idは1以上を入力してください")));
         }
 
-        //id存在確認
-        Book book = bookService.updateBook(id, request);
-        if (book == null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of("該当のidがありません。")));
-        }
+        bookService.updateBook(id, request);
         return ResponseEntity.status(HttpStatus.OK).body(Map.of("messages", List.of("更新完了")));
     }
     

@@ -14,4 +14,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByTitleOrderByIdDesc(String title);//タイトル検索
     
     List<Book> findByAuthorOrderByIdDesc(String author);//著者検索
+
 }
