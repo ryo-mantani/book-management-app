@@ -1,5 +1,25 @@
 ## 📝 開発ログ
 
+### 2026/05/26 作業時間：2.0h
+- 実装内容
+  - React 環境構築
+    - Node.js / npm 動作確認
+    - Vite による React プロジェクト作成
+    - book-app-frontend 作成
+  - React アプリ起動確認
+    - localhost:5173 表示確認
+    - App.jsx 編集
+  - Spring Boot API連携
+    - fetch() による GET API 呼び出し
+    - useEffect() を利用した初期通信処理追加
+    - useState() を利用した状態管理追加
+    - books.map() による一覧表示実装
+  - CORS接続確認
+    - Spring Boot API と React 間通信確認
+  - PostgreSQL → Spring Boot → React 表示確認
+  - ブラウザ上で一覧表示確認
+  ---
+
 ### 2026/05/25 作業時間：3.0h
 - 実装内容
   - BookService 改修

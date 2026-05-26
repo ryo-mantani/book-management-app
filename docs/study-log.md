@@ -1,5 +1,20 @@
 ## 📝 学習ログ
 
+### 2026/05/26 作業時間：2.0h
+- 学習内容
+  - React 環境構築の基本理解
+  - Vite の役割
+  - fetch() の基本理解
+  - Promise / then() の基本理解
+  - response.json() の役割
+  - useEffect() の役割
+  - useState() の役割
+  - setState による画面更新理解
+  - map() によるリスト表示
+  - フロントエンド ↔ バックエンド API通信の流れ
+  - PostgreSQL → Spring Boot → React のデータ連携理解
+  ---
+
 ### 2026/05/25 作業時間：3.0h
 - 学習内容
   - Service層へ例外処理を集約する考え方
