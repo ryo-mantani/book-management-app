@@ -110,7 +110,7 @@ CSSによるUI調整を継続しています。
 ## 📷 画面イメージ
 画面イメージはフロントエンドリポジトリに掲載しています。
 - [book-app-frontend]
-   (https://github.com/ryo-mantani/book-app-frontend/docs/images)
+   (https://github.com/ryo-mantani/book-app-frontend/tree/main/docs/images)
 ---
 
 ## ディレクトリ構成
