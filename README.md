@@ -106,6 +106,11 @@ CSSによるUI調整を継続しています。
 - [開発ログ](docs/development-log.md)
 - [DB設計](docs/db-design.md)
 - [API設計](docs/api-design.md)
+
+## 📷 画面イメージ
+画面イメージはフロントエンドリポジトリに掲載しています。
+- [book-app-frontend]
+   (https://github.com/ryo-mantani/book-app-frontend/docs/images)
 ---
 
 ## ディレクトリ構成
