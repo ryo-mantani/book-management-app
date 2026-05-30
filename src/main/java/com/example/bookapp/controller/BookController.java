@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -91,17 +92,15 @@ public class BookController {
         return ResponseEntity.ok(bookService.getBooks());
     }
 
-    //検索（タイトルor著者）
-    @GetMapping("/books/search/{keyType}/{keyword}")
-    public ResponseEntity<?> searchBook(@PathVariable String keyType, @PathVariable String keyword) {
+    //検索（タイトルand著者）
+    @GetMapping("/books/search")
+  public ResponseEntity<?> searchBook(
+            @RequestParam(defaultValue = "") String title,
+            @RequestParam(defaultValue = "") String author) {
 
-        //{keyType}の入力チェック
-        if (!keyType.equals("title") && !keyType.equals("author")) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("messages", List.of("title または author を指定してください")));
-        }
- 
+
         //存在確認
-        List<BookResponseDto> books = bookService.searchBook(keyType, keyword);
+        List<BookResponseDto> books = bookService.searchBook(title, author);
         if (books.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("messages", List.of("検索対象の情報がありません。")));
 

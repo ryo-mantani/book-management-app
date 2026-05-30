@@ -99,22 +99,21 @@ public class BookService {
     }   
     
     //著者orタイトル検索
-    public List<BookResponseDto> searchBook(String keyType, String keyword){
+    public List<BookResponseDto> searchBook(String title, String author){
        
         List<Book> books;
 
-        switch (keyType) {
-            case "title":
-                books = bookRepository.findByTitleOrderByIdDesc(keyword);
-                break;
+        if (!title.isEmpty() && !author.isEmpty()) {
+            books = bookRepository.findByTitleContainingAndAuthorContainingOrderByIdDesc(title, author);//and検索
 
-            case "author":
-                books = bookRepository.findByAuthorOrderByIdDesc(keyword);
-                break;
+        } else if (!title.isEmpty()) {
+            books = bookRepository.findByTitleContainingOrderByIdDesc(title);//タイトル検索
 
-            default:
-                return getBooks();
+        } else if (!author.isEmpty()) {
+            books = bookRepository.findByAuthorContainingOrderByIdDesc(author);//著者検索
 
+        } else {
+            return getBooks();
         }
 
         List<BookResponseDto> bookResponses = new ArrayList<>();
