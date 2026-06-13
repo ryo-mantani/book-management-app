@@ -29,6 +29,8 @@ public class BookService {
         Book book = new Book();
         book.setTitle(request.getBookTitle());
         book.setAuthor(request.getAuthorName());
+        book.setVolume(request.getBookVolume());
+        book.setCoverImage(request.getCoverImage());
 
         return bookRepository.save(book);
     }
@@ -58,6 +60,8 @@ public class BookService {
 
         book.setTitle(request.getBookTitle());
         book.setAuthor(request.getAuthorName());
+        book.setVolume(request.getBookVolume());
+        book.setCoverImage(request.getCoverImage());
 
         bookRepository.save(book);
   
@@ -70,14 +74,9 @@ public class BookService {
         Book book = bookRepository.findById(id).orElse(null);
         if (book == null){
             throw new BookNotFoundException("該当のidがありません。");
-        } else {    
-            BookResponseDto bookResponse = new BookResponseDto();
-            bookResponse.setBookId(book.getId());
-            bookResponse.setBookTitle(book.getTitle());
-            bookResponse.setAuthorName(book.getAuthor());
-
-            return bookResponse;
         }
+
+        return toResponseDto(book);
     }
 
     //一覧
@@ -86,12 +85,7 @@ public class BookService {
         List<Book> books = bookRepository.findAllByOrderByIdDesc();//降順
         
         for (Book book:books){
-            BookResponseDto bookResponse = new BookResponseDto();
-            //バラして再度、配列に入れなおす
-            bookResponse.setBookId(book.getId());
-            bookResponse.setBookTitle(book.getTitle());
-            bookResponse.setAuthorName(book.getAuthor());
-            bookResponses.add(bookResponse);
+            bookResponses.add(toResponseDto(book));
         }
         
         return bookResponses;//配列で返す
@@ -119,16 +113,25 @@ public class BookService {
         List<BookResponseDto> bookResponses = new ArrayList<>();
 
         for (Book book:books){
-            BookResponseDto bookResponse = new BookResponseDto();
-            //バラして再度、配列に入れなおす
-            bookResponse.setBookId(book.getId());
-            bookResponse.setBookTitle(book.getTitle());
-            bookResponse.setAuthorName(book.getAuthor());
-            bookResponses.add(bookResponse);
+            bookResponses.add(toResponseDto(book));
         } 
         
         return bookResponses;//配列で返す
     }
 
+
+    //Book(Entity)をBookResponseDtoへ変換
+    private BookResponseDto toResponseDto(Book book) {
+        BookResponseDto bookResponse = new BookResponseDto();
+
+        bookResponse.setBookId(book.getId());
+        bookResponse.setBookTitle(book.getTitle());
+        bookResponse.setAuthorName(book.getAuthor());
+        bookResponse.setBookVolume(book.getVolume());
+        bookResponse.setCoverImage(book.getCoverImage());
+
+        return bookResponse;
+
+    }
 
 }

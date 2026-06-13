@@ -94,9 +94,9 @@ public class BookController {
 
     //検索（タイトルand著者）
     @GetMapping("/books/search")
-  public ResponseEntity<?> searchBook(
-            @RequestParam(defaultValue = "") String title,
-            @RequestParam(defaultValue = "") String author) {
+    public ResponseEntity<?> searchBook(
+        @RequestParam(defaultValue = "") String title,
+        @RequestParam(defaultValue = "") String author) {
 
 
         //存在確認
